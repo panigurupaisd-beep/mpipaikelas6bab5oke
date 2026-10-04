@@ -1,1 +1,133 @@
 @import "tailwindcss";
+
+:root {
+  --color-primary: #0D9488;
+  --color-primary-dark: #065F46;
+  --color-secondary: #F59E0B;
+  --color-secondary-dark: #D97706;
+  --color-accent: #EA580C;
+  --color-bg-cream: #FEF9E7;
+  --color-bg-light: #F0FDF4;
+  --color-text-dark: #1E293B;
+  --color-text-body: #334155;
+  --color-success: #16A34A;
+  --color-error: #DC2626;
+  --color-gold: #FBBF24;
+  --font-display: 'Fredoka', sans-serif;
+  --font-body: 'Nunito', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-text-body);
+  background: var(--color-bg-cream);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  color: var(--color-text-dark);
+}
+
+.pixel-border {
+  border: 4px solid var(--color-primary-dark);
+  box-shadow: 4px 4px 0px var(--color-primary-dark);
+}
+
+.btn-bounce:active {
+  transform: scale(0.95);
+  transition: transform 0.1s ease;
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0.3); opacity: 0; }
+  50% { transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px rgba(245, 158, 11, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes star-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-bounce-in { animation: bounce-in 0.5s ease forwards; }
+.animate-shake { animation: shake 0.4s ease; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-slide-up { animation: slide-up 0.4s ease forwards; }
+.animate-star-spin { animation: star-spin 1s ease; }
+
+.islamic-pattern {
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(13, 148, 136, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(245, 158, 11, 0.05) 0%, transparent 50%);
+}
+
+.drag-item {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.drag-item:active {
+  cursor: grabbing;
+}
+
+.drop-zone {
+  min-height: 60px;
+  transition: all 0.2s ease;
+}
+
+.drop-zone.drag-over {
+  border-color: var(--color-secondary);
+  background-color: rgba(245, 158, 11, 0.1);
+  transform: scale(1.02);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-cream); border-radius: 4px; }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-primary-dark); }
+
+/* Touch-friendly styles */
+@media (pointer: coarse) {
+  button, a, .clickable {
+    min-height: 48px;
+    min-width: 48px;
+  }
+}
+
+/* FID/Large screen */
+@media (min-width: 1400px) {
+  body { font-size: 22px; }
+}
